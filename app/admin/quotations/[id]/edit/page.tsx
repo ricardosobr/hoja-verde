@@ -96,6 +96,7 @@ interface QuotationDocument {
 }
 
 export default function EditQuotationPage({ params }: { params: { id: string } }) {
+  const resolvedParams = use(params)
   const [companies, setCompanies] = useState<Company[]>([])
   const [products, setProducts] = useState<Product[]>([])
   const [selectedProducts, setSelectedProducts] = useState<QuotationItem[]>([])
@@ -152,7 +153,7 @@ export default function EditQuotationPage({ params }: { params: { id: string } }
             tax_amount
           )
         `)
-        .eq('id', params.id)
+        .eq('id', resolvedParams.id)
         .eq('type', 'quotation')
         .single()
 
@@ -375,7 +376,7 @@ export default function EditQuotationPage({ params }: { params: { id: string } }
           tax_amount: totals.tax_amount,
           total: totals.total,
         })
-        .eq('id', params.id)
+        .eq('id', resolvedParams.id)
 
       if (quotationError) throw quotationError
 
@@ -383,13 +384,13 @@ export default function EditQuotationPage({ params }: { params: { id: string } }
       const { error: deleteError } = await supabase
         .from('document_items')
         .delete()
-        .eq('document_id', params.id)
+        .eq('document_id', resolvedParams.id)
 
       if (deleteError) throw deleteError
 
       // Create new quotation items
       const items = selectedProducts.map(item => ({
-        document_id: params.id,
+        document_id: resolvedParams.id,
         product_id: item.product_id,
         product_code: item.product_code,
         product_name: item.product_name,
@@ -410,7 +411,7 @@ export default function EditQuotationPage({ params }: { params: { id: string } }
       const { error: revisionError } = await supabase
         .from('document_revisions')
         .insert({
-          document_id: params.id,
+          document_id: resolvedParams.id,
           revision_number: (Date.now() % 1000), // Simple revision numbering
           changed_by: (await supabase.auth.getUser()).data.user?.id,
           change_reason: 'Quotation updated',

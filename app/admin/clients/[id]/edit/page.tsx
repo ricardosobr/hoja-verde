@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { use, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -37,6 +37,7 @@ interface EditCompanyPageProps {
 }
 
 export default function EditCompanyPage({ params }: EditCompanyPageProps) {
+  const resolvedParams = use(params)
   const router = useRouter()
   const [company, setCompany] = useState<Company | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -55,10 +56,10 @@ export default function EditCompanyPage({ params }: EditCompanyPageProps) {
   })
 
   useEffect(() => {
-    if (params.id) {
+    if (resolvedParams.id) {
       fetchCompany()
     }
-  }, [params.id])
+  }, [resolvedParams.id])
 
   const fetchCompany = async () => {
     setIsFetching(true)
@@ -67,7 +68,7 @@ export default function EditCompanyPage({ params }: EditCompanyPageProps) {
       const { data, error } = await supabase
         .from('companies')
         .select('*')
-        .eq('id', params.id)
+        .eq('id', resolvedParams.id)
         .single()
 
       if (error) throw error

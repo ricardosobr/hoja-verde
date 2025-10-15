@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { use, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
 import { useNotificationStore } from '@/lib/store'
@@ -82,6 +82,7 @@ interface CompanyDetailPageProps {
 }
 
 export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
+  const resolvedParams = use(params)
   const router = useRouter()
   const [company, setCompany] = useState<Company | null>(null)
   const [stats, setStats] = useState<CompanyStats | null>(null)
@@ -92,11 +93,11 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
   const supabase = createClient()
 
   useEffect(() => {
-    if (params.id) {
+    if (resolvedParams.id) {
       fetchCompanyDetails()
       fetchCompanyStats()
     }
-  }, [params.id])
+  }, [resolvedParams.id])
 
   const fetchCompanyDetails = async () => {
     try {
@@ -124,7 +125,7 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
             )
           )
         `)
-        .eq('id', params.id)
+        .eq('id', resolvedParams.id)
         .single()
 
       if (error) throw error
@@ -151,13 +152,13 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
         supabase
           .from('quotations')
           .select('total, status')
-          .eq('company_id', params.id),
+          .eq('company_id', resolvedParams.id),
         
         // Orders stats  
         supabase
           .from('orders')
           .select('total, status')
-          .eq('company_id', params.id),
+          .eq('company_id', resolvedParams.id),
         
         // Recent activity
         supabase

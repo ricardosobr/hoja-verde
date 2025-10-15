@@ -82,7 +82,7 @@ interface StatusHistoryEntry {
 export default function OrderDetailPage() {
   const params = useParams()
   const router = useRouter()
-  const orderId = params.id as string
+  const orderId = resolvedParams.id as string
   
   const [order, setOrder] = useState<Order | null>(null)
   const [statusHistory, setStatusHistory] = useState<StatusHistoryEntry[]>([])
