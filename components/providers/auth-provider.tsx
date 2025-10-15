@@ -9,12 +9,22 @@ const AuthContext = createContext<Record<string, never>>({})
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const supabase = useMemo(() => createClient(), [])
-  const { setUser, setLoading } = useAuthStore()
   const router = useRouter()
   const [initialCheckDone, setInitialCheckDone] = useState(false)
   const initialCheckDoneRef = useRef(false)
+  const [isHydrated, setIsHydrated] = useState(false)
+
+  // Hydrate Zustand store on client side
+  useEffect(() => {
+    useAuthStore.persist.rehydrate()
+    setIsHydrated(true)
+  }, [])
+
+  const { setUser, setLoading } = useAuthStore()
 
   useEffect(() => {
+    if (!isHydrated) return
+
     console.log('🔍 AuthProvider: Initializing...')
     setLoading(true)
 
@@ -128,7 +138,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       clearTimeout(fallbackTimeout)
       subscription.unsubscribe()
     }
-  }, [supabase, setUser, setLoading, router])
+  }, [supabase, setUser, setLoading, router, isHydrated])
 
   // Show loading screen while checking authentication
   if (!initialCheckDone) {
