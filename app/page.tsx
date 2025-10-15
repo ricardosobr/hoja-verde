@@ -1,17 +1,22 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/lib/store'
 import LoginForm from '@/components/auth/login-form'
 import { Leaf } from 'lucide-react'
 
 export default function HomePage() {
-  const { user, isLoading } = useAuthStore()
   const router = useRouter()
+  const [mounted, setMounted] = useState(false)
+  const { user, isLoading } = useAuthStore()
 
   useEffect(() => {
-    if (!isLoading && user) {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (mounted && !isLoading && user) {
       // Redirect based on user role
       if (user.role === 'admin') {
         router.push('/admin/dashboard')
@@ -19,9 +24,9 @@ export default function HomePage() {
         router.push('/client')
       }
     }
-  }, [user, isLoading, router])
+  }, [mounted, user, isLoading, router])
 
-  if (isLoading) {
+  if (!mounted || isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{
         background: 'linear-gradient(135deg, #10b981 0%, #14b8a6 100%)'

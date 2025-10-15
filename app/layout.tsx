@@ -1,27 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Crimson_Text } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from '@/components/providers/auth-provider'
 import { NotificationProvider } from '@/components/providers/notification-provider'
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: 'swap',
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: 'swap',
-});
-
-const crimson = Crimson_Text({
-  subsets: ["latin"],
-  weight: ['400', '600', '700'],
-  variable: "--font-crimson",
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: "Hoja Verde - Sistema de Cotizaciones",
@@ -36,9 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="h-full">
-      <body
-        className={`${inter.variable} ${playfair.variable} ${crimson.variable} font-sans antialiased h-full bg-gray-50`}
-      >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet" />
+      </head>
+      <body className="font-sans antialiased h-full bg-gray-50">
         <AuthProvider>
           <NotificationProvider>
             {children}
