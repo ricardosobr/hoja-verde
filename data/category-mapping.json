@@ -1,0 +1,147 @@
+{
+  "description": "Category mapping configuration for product import. Maps CSV categories to database categories.",
+  "existingCategories": {
+    "ABARROTES": {
+      "id": "38edfb79-6afe-436e-88db-322aa043f02a",
+      "name": "ABARROTES",
+      "description": "Productos de abarrotes y despensa",
+      "csvMapping": ["ABARROTES"]
+    },
+    "AMENIDADES": {
+      "id": "c223c390-1239-42bb-8b83-e4e213c75e17", 
+      "name": "AMENIDADES",
+      "description": "Amenidades para hoteles",
+      "csvMapping": ["AMENITIES Y BOUTIQUE"]
+    },
+    "BEBIDAS": {
+      "id": "f7ff30c8-18a8-443b-b866-882edea55e96",
+      "name": "BEBIDAS", 
+      "description": "Bebidas alcohólicas y no alcohólicas",
+      "csvMapping": ["BEBIDAS ALCOHOLICAS", "BEBIDAS NO ALCOHOLICAS", "BEBALCOHOLICA"]
+    },
+    "CARNES": {
+      "id": "8e3f8d95-4287-47bb-88a2-f0a6eb355e72",
+      "name": "CARNES",
+      "description": "Carnes y embutidos", 
+      "csvMapping": ["CARNES", "EMBUTIDOS", "CORTES AMERICANOS"]
+    },
+    "COCINA": {
+      "id": "3996099f-a1ed-44e2-89a8-406e156b81c7",
+      "name": "COCINA",
+      "description": "Insumos para cocina",
+      "csvMapping": ["COCINA", "INSUMOS COCINA", "CONDIMENTOS", "HIERBAS FINAS", "INSUMOS PASTELERIA", "PANADERIA"]
+    },
+    "FRUTAS_VERDURAS": {
+      "id": "6c7e227c-a404-4405-8a5a-7f27911c7b95",
+      "name": "FRUTAS_VERDURAS",
+      "description": "Frutas y verduras frescas",
+      "csvMapping": ["FRUTAS Y VERDURAS", "FRUTAS"]
+    },
+    "LACTEOS": {
+      "id": "2c46aafc-1900-4a20-b7a8-86cbe9eca077",
+      "name": "LACTEOS", 
+      "description": "Productos lácteos",
+      "csvMapping": ["LACTEOS"]
+    },
+    "LIMPIEZA": {
+      "id": "f3483a65-2be1-4751-bac2-772cef038a5c",
+      "name": "LIMPIEZA",
+      "description": "Productos de limpieza",
+      "csvMapping": ["LIMPIEZA", "LAVANDERIA"]
+    }
+  },
+  "newCategoriesToCreate": {
+    "PESCADOS_MARISCOS": {
+      "name": "PESCADOS_MARISCOS",
+      "description": "Pescados y mariscos frescos",
+      "csvMapping": ["PESCADOS Y MARISCOS", "MARISCOS"]
+    },
+    "PAPELERIA": {
+      "name": "PAPELERIA", 
+      "description": "Artículos de papelería y oficina",
+      "csvMapping": ["PAPELERIA"]
+    },
+    "SEMILLAS_GRANOS": {
+      "name": "SEMILLAS_GRANOS",
+      "description": "Semillas y granos",
+      "csvMapping": ["SEMILLAS Y GRANOS"]
+    },
+    "SPA_WELLNESS": {
+      "name": "SPA_WELLNESS",
+      "description": "Insumos para spa y bienestar", 
+      "csvMapping": ["INSUMOS PARA SPA", "INSUMOS Y MATERIALES DE SPA"]
+    },
+    "HOTELERIA": {
+      "name": "HOTELERIA",
+      "description": "Insumos para cuartos y hotelería",
+      "csvMapping": ["INSUMOS PARA CUARTOS"]
+    },
+    "SALUD": {
+      "name": "SALUD",
+      "description": "Botiquín y primeros auxilios",
+      "csvMapping": ["BOTIQUINES Y PRIMEROS AUXILIOS"]
+    },
+    "VEHICULOS": {
+      "name": "VEHICULOS",
+      "description": "Productos para vehículos",
+      "csvMapping": ["VEHICULOS"]
+    },
+    "ARTESANIAS": {
+      "name": "ARTESANIAS", 
+      "description": "Productos artesanales",
+      "csvMapping": ["ARTESANIAS"]
+    },
+    "CRISTALERIA": {
+      "name": "CRISTALERIA",
+      "description": "Cristalería y artículos de mesa",
+      "csvMapping": ["CRISTALERIA Y OTROS"]
+    },
+    "VARIOS": {
+      "name": "VARIOS",
+      "description": "Productos varios sin categoría específica",
+      "csvMapping": ["VARIOS", "", "Categoría", "Prueba"]
+    }
+  },
+  "csvCategoryMapping": {
+    "CONDIMENTOS": "COCINA",
+    "INSUMOS COCINA": "COCINA", 
+    "FRUTAS Y VERDURAS": "FRUTAS_VERDURAS",
+    "COCINA": "COCINA",
+    "BEBIDAS ALCOHOLICAS": "BEBIDAS",
+    "PAPELERIA": "PAPELERIA",
+    "BEBIDAS NO ALCOHOLICAS": "BEBIDAS", 
+    "ABARROTES": "ABARROTES",
+    "INSUMOS PARA CUARTOS": "HOTELERIA",
+    "LIMPIEZA": "LIMPIEZA",
+    "AMENITIES Y BOUTIQUE": "AMENIDADES",
+    "LACTEOS": "LACTEOS",
+    "SEMILLAS Y GRANOS": "SEMILLAS_GRANOS",
+    "INSUMOS PARA SPA": "SPA_WELLNESS",
+    "CARNES": "CARNES",
+    "LAVANDERIA": "LIMPIEZA",
+    "INSUMOS Y MATERIALES DE SPA": "SPA_WELLNESS", 
+    "BOTIQUINES Y PRIMEROS AUXILIOS": "SALUD",
+    "HIERBAS FINAS": "COCINA",
+    "PESCADOS Y MARISCOS": "PESCADOS_MARISCOS",
+    "PANADERIA": "COCINA",
+    "CORTES AMERICANOS": "CARNES",
+    "VEHICULOS": "VEHICULOS",
+    "EMBUTIDOS": "CARNES",
+    "ARTESANIAS": "ARTESANIAS",
+    "CRISTALERIA Y OTROS": "CRISTALERIA",
+    "INSUMOS PASTELERIA": "COCINA",
+    "BEBALCOHOLICA": "BEBIDAS",
+    "VARIOS": "VARIOS",
+    "MARISCOS": "PESCADOS_MARISCOS",
+    "FRUTAS": "FRUTAS_VERDURAS",
+    "": "VARIOS",
+    "Categoría": "VARIOS",
+    "Prueba": "VARIOS"
+  },
+  "stats": {
+    "totalExistingCategories": 8,
+    "totalNewCategories": 10,
+    "totalMappedCSVCategories": 35,
+    "lastUpdated": "2025-09-08"
+  }
+}

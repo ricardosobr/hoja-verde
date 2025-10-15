@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background colors using brand cream */
+    --background: 45 33% 96%; /* #F5F3EF - Natural Cream */
+    --foreground: 140 26% 19%; /* #325444 - Primary Green for text */
+    
+    /* Card colors */
+    --card: 0 0% 100%; /* Pure white for cards */
+    --card-foreground: 140 26% 19%; /* Primary Green */
+    
+    /* Popover colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 140 26% 19%;
+    
+    /* Brand primary - Forest Green */
+    --primary: 140 26% 27%; /* #325444 - Primary Green */
+    --primary-foreground: 45 33% 96%; /* Natural Cream */
+    
+    /* Secondary using Sage Green */
+    --secondary: 125 15% 53%; /* #7B9A7D - Secondary Sage */
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Muted using lighter sage */
+    --muted: 125 27% 82%; /* Lighter sage for muted backgrounds */
+    --muted-foreground: 140 26% 19%;
+    
+    /* Accent using Earth tone */
+    --accent: 25 30% 63%; /* #C29D7F - Earth Tone */
+    --accent-foreground: 140 26% 19%;
+    
+    /* Destructive (keep standard red) */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    /* Borders using subtle sage */
+    --border: 125 20% 88%; /* Very light sage for borders */
+    --input: 125 20% 88%;
+    --ring: 140 26% 27%; /* Primary Green for focus rings */
+    
+    /* Border radius - slightly more rounded for organic feel */
+    --radius: 0.75rem;
+    
+    /* Design System Tokens */
+    /* Spacing scale */
+    --spacing-xs: 0.25rem;    /* 4px */
+    --spacing-sm: 0.5rem;     /* 8px */
+    --spacing-md: 1rem;       /* 16px */
+    --spacing-lg: 1.5rem;     /* 24px */
+    --spacing-xl: 2rem;       /* 32px */
+    --spacing-2xl: 3rem;      /* 48px */
+    --spacing-3xl: 4rem;      /* 64px */
+    
+    /* Typography scale */
+    --text-xs: 0.75rem;       /* 12px */
+    --text-sm: 0.875rem;      /* 14px */
+    --text-base: 1rem;        /* 16px */
+    --text-lg: 1.125rem;      /* 18px */
+    --text-xl: 1.25rem;       /* 20px */
+    --text-2xl: 1.5rem;       /* 24px */
+    --text-3xl: 1.875rem;     /* 30px */
+    --text-4xl: 2.25rem;      /* 36px */
+    
+    /* Line heights */
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.625;
+    
+    /* Font weights */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    
+    /* Shadow system */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    
+    /* Brand specific shadows with green tint */
+    --shadow-brand: 0 4px 6px -1px rgb(50 84 68 / 0.1), 0 2px 4px -2px rgb(50 84 68 / 0.1);
+    
+    /* Enhanced brand shadows */
+    --shadow-brand-sm: 0 1px 2px 0 rgb(50 84 68 / 0.08);
+    --shadow-brand-lg: 0 10px 15px -3px rgb(50 84 68 / 0.15), 0 4px 6px -4px rgb(50 84 68 / 0.08);
+    
+    /* Animation timing variables */
+    --animate-fast: 150ms;
+    --animate-normal: 200ms;
+    --animate-slow: 300ms;
+  }
+
+  .dark {
+    /* Dark mode using darker brand greens */
+    --background: 140 40% 8%; /* Very dark forest green */
+    --foreground: 45 33% 96%; /* Natural Cream for text */
+    
+    /* Card colors */
+    --card: 140 35% 12%; /* Dark green cards */
+    --card-foreground: 45 33% 96%;
+    
+    /* Popover colors */
+    --popover: 140 35% 12%;
+    --popover-foreground: 45 33% 96%;
+    
+    /* Primary - brighter sage for dark mode */
+    --primary: 125 15% 53%; /* #7B9A7D - Secondary Sage for primary in dark */
+    --primary-foreground: 140 40% 8%;
+    
+    /* Secondary */
+    --secondary: 140 30% 20%; /* Darker forest green */
+    --secondary-foreground: 45 33% 96%;
+    
+    /* Muted */
+    --muted: 140 30% 20%;
+    --muted-foreground: 125 27% 82%;
+    
+    /* Accent using copper */
+    --accent: 17 35% 40%; /* Darker copper #8B5A3C */
+    --accent-foreground: 45 33% 96%;
+    
+    /* Destructive */
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 45 33% 96%;
+    
+    /* Borders */
+    --border: 140 30% 20%;
+    --input: 140 30% 20%;
+    --ring: 125 15% 53%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom scrollbar with brand colors */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--ring));
+}
+
+/* Enhanced animations */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    to right,
+    hsl(var(--muted)) 0%,
+    hsl(var(--border)) 20%,
+    hsl(var(--muted)) 40%,
+    hsl(var(--muted)) 100%
+  );
+  background-size: 1000px 104px;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* Enhanced focus styles */
+.focus-brand:focus {
+  outline: none;
+  ring: 2px solid hsl(var(--ring));
+  ring-offset: 2px;
+}
+
+/* Backdrop blur utilities */
+.backdrop-blur-brand {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Gradient text utilities */
+.text-gradient-brand {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Blob animations for modern login page */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Smooth fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Pulse animation */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
